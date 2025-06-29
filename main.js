@@ -33,3 +33,25 @@ function loadSecureNote() {
   const saved = localStorage.getItem("secureNote");
   if (saved) document.getElementById("secureNote").value = saved;
 }
+// Firebase existing logic (already in your file)...
+
+// Chat message send hone ke baad ye function call hoga
+function showSentMessageAnimation() {
+  const sentStatus = document.createElement('div');
+  sentStatus.innerText = "✅ Sent!";
+  sentStatus.classList.add('sent-status');
+  document.body.appendChild(sentStatus);
+
+  setTimeout(() => {
+    sentStatus.remove();
+  }, 1000); // 1 second me hat jayega
+}
+
+// Message append hone pe animation lagana
+function addMessageToChatbox(messageText, from) {
+  const messageDiv = document.createElement('div');
+  messageDiv.innerText = messageText;
+  messageDiv.className = `chat-message ${from}`;
+  messageDiv.classList.add('message-animate'); // animation class add
+  document.querySelector('.chatbox').appendChild(messageDiv);
+}
